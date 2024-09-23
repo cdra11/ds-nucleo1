@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Estudiante</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h1 th:text="${estudiante.idEstudiante == null} ? 'Agregar Estudiante' : 'Editar Estudiante'"></h1>
+    <form th:action="@{/estudiantes/guardar}" th:object="${estudiante}" method="post">
+        <div class="form-group">
+            <label for="nombreEstudiante">Nombre</label>
+            <input type="text" id="nombreEstudiante" th:field="*{nombreEstudiante}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="apellidoEstudiante">Apellido</label>
+            <input type="text" id="apellidoEstudiante" th:field="*{apellidoEstudiante}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="fechaNacimiento">Fecha de Nacimiento</label>
+            <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" th:field="*{correo}" class="form-control" required>
+        </div>
+        <input type="hidden" th:field="*{idEstudiante}" />
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a href="/estudiantes" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
